@@ -5,7 +5,7 @@ import './App.css';
 const {
   Header, Content, Footer, Sider,
 } = Layout;
-const { SubMenu } = Menu.SubMenu;
+const { SubMenu } = Menu;
 
 class App extends Component {
   constructor(props) {
@@ -48,59 +48,59 @@ class App extends Component {
                 <span>
                   <Icon type="team" />
                   <span>
-Hotel Management
+                    Hotel Management
                   </span>
                 </span>
-)}
+              )}
             >
               <Menu.Item key="6">
-List
+                List
               </Menu.Item>
               <Menu.Item key="8">
-Hotel staff
+                Hotel staff
               </Menu.Item>
             </SubMenu>
             <Menu.Item key="1">
               <Icon type="user" />
               <span className="nav-text">
-Hotel Management
+                Hotel Management
               </span>
             </Menu.Item>
             <Menu.Item key="2">
               <Icon type="video-camera" />
               <span className="nav-text">
-Staff Management
+                Staff Management
               </span>
             </Menu.Item>
             <Menu.Item key="1">
               <Icon type="user" />
               <span className="nav-text">
-Booking
+                Booking
               </span>
             </Menu.Item>
 
             <Menu.Item key="3">
               <Icon type="upload" />
               <span className="nav-text">
-Customer
+                Customer
               </span>
             </Menu.Item>
             <Menu.Item key="4">
               <Icon type="bar-chart" />
               <span className="nav-text">
-Reports
+                Reports
               </span>
             </Menu.Item>
             <Menu.Item key="5">
               <Icon type="cloud-o" />
               <span className="nav-text">
-Configration
+                Configration
               </span>
             </Menu.Item>
             <Menu.Item key="5">
               <Icon type="cloud-o" />
               <span className="nav-text">
-Notification Center
+                Notification Center
               </span>
             </Menu.Item>
             <SubMenu
@@ -109,41 +109,51 @@ Notification Center
                 <span>
                   <Icon type="team" />
                   <span>
-Team
+                    Team
                   </span>
                 </span>
-)}
+              )}
             >
               <Menu.Item key="6">
-Team 1
+                Team 1
               </Menu.Item>
               <Menu.Item key="8">
-Team 2
+                Team 2
               </Menu.Item>
             </SubMenu>
             <Menu.Item key="7">
               <Icon type="team" />
               <span className="nav-text">
-nav 7
+                nav 7
               </span>
             </Menu.Item>
             <Menu.Item key="8">
               <Icon type="shop" />
               <span className="nav-text">
-nav 8
+                nav 8
               </span>
             </Menu.Item>
           </Menu>
         </Sider>
-        <Layout style={{ marginLeft: 200 }}>
+        <Layout style={{ marginLeft: 200, height: '100vh' }}>
 
           <Content style={{ margin: '84px 16px 0', overflow: 'initial' }}>
-            <div style={{ padding: 24, background: '#fff', textAlign: 'center' }}>
-          content
+            <div style={{ padding: 24, background: '#fff', textAlign: 'center', height: '100%' }}>
+              content
+              <br/>...<br/>...<br/>...<br/>...<br/>
+              <br/>...<br/>...<br/>...<br/>...<br/>
+              <br/>...<br/>...<br/>...<br/>...<br/>
+              <br/>...<br/>...<br/>...<br/>...<br/>
+              <br/>...<br/>...<br/>...<br/>...<br/>
+              <br/>...<br/>...<br/>...<br/>...<br/>
+              <br/>...<br/>...<br/>...<br/>...<br/>
+              <br/>...<br/>...<br/>...<br/>...<br/>
+              <br/>...<br/>...<br/>...<br/>...<br/><br/>...<br/>...<br/>...<br/>...<br/>
+              
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-        Ant Design ©2018 Created by Ant UED
+            Ant Design ©2018 Created by Ant UED
           </Footer>
         </Layout>
       </Layout>
