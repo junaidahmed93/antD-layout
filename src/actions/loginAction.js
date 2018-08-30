@@ -12,6 +12,13 @@ export function requestLogInUser() {
   };
   return action;
 }
+
+export function LogoutRequestUser(){
+    const action = {
+        type: CONSTANTS.LOG_OUT,
+      };
+      return action;
+}
 export function loginSuccess(user) {
   const action = {
     type: CONSTANTS.LOGIN_SUCCESS,
@@ -36,3 +43,10 @@ export function LoginRequest() {
     // },5000)
   };
 }
+
+export function LogoutRequest() {
+    return (dispatch) => {
+      dispatch(requestLogInUser());
+    };
+  }
+  
