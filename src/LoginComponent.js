@@ -12,14 +12,14 @@ class LoginContainer extends React.Component {
     componentDidMount() {
         const { isLoggedIn, history } = this.props;
         if (isLoggedIn) {
-            history.push('/home');
+            history.push('/dashboard');
         }
     }
 
     login = () => {
         const { history } = this.props;
         this.props.actions.LoginRequest();
-        history.push('/home');
+        history.push('/dashboard');
     }
 
     render() {
@@ -33,7 +33,6 @@ class LoginContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    console.log('state', state);
     return {
         isLoggedIn: state.loginReducer.isLoggedIn,
     };

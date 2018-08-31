@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
-import './App.css';
+import '../../App.css';
 import {
   BrowserRouter as Router, Route, Link,
 } from 'react-router-dom';
@@ -10,7 +10,7 @@ const {
 } = Layout;
 const { SubMenu } = Menu;
 
-class App extends Component {
+class AdminMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,6 +27,7 @@ class App extends Component {
 
   render() {
     const { routes } = this.props;
+    console.log('app props', this.props);
     return (
 
       <Layout>
@@ -49,7 +50,7 @@ class App extends Component {
             <Menu.Item key="1">
               <Icon type="user" />
               <span className="nav-text">
-                <Link to="/about"> Dashboard </Link>
+                <Link to="/dashboard"> Dashboard </Link>
               </span>
             </Menu.Item>
             <SubMenu
@@ -78,7 +79,7 @@ class App extends Component {
             </Menu.Item>
 
             <Menu.Item key="3">
-              <Link to="/contact">
+              <Link to="/bookings">
                 <Icon type="user" />
                 <span className="nav-text">
                   Booking
@@ -93,7 +94,7 @@ class App extends Component {
             <div style={{
               padding: 24, background: '#fff', textAlign: 'center', minHeight: 360,
             }}
-            >
+            > VD
               {routes.map(prop => <Route path={prop.path} component={prop.component} />)}
             </div>
           </Content>
@@ -108,4 +109,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default AdminMain;

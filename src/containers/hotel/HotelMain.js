@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
-import './App.css';
+import '../../App.css';
 import {
-  BrowserRouter as Router, Route, Link,
+  BrowserRouter as Router, Route, Link, Switch
 } from 'react-router-dom';
-
+import DashboardContainer from './DashboardContainer';
+import BookingContainer from './BookingContainer';
 const {
   Header, Content, Footer, Sider,
 } = Layout;
 const { SubMenu } = Menu;
 
-class App extends Component {
+class HotelMain extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,9 +27,8 @@ class App extends Component {
   }
 
   render() {
-    const { routes } = this.props;
+    const { routes, match, location } = this.props;
     return (
-
       <Layout>
         <Header
           className="header-style"
@@ -46,10 +46,11 @@ class App extends Component {
         >
 
           <Menu theme="white" mode="inline" defaultSelectedKeys={['4']}>
-            <Menu.Item key="1">
+            <Menu.Item key="1" onClick={() => { this.props.history.push('/dashboard') }}>
               <Icon type="user" />
               <span className="nav-text">
-                <Link to="/about"> Dashboard </Link>
+                {/* <Link to="/dashboard"> Hotel Dashboard </Link> */}
+                Hotel Dashboard
               </span>
             </Menu.Item>
             <SubMenu
@@ -58,7 +59,7 @@ class App extends Component {
                 <span>
                   <Icon type="team" />
                   <span>
-                    Hotel Management
+                    Hotel Users
                   </span>
                 </span>
               )}
@@ -78,10 +79,10 @@ class App extends Component {
             </Menu.Item>
 
             <Menu.Item key="3">
-              <Link to="/contact">
+              <Link to="/bookings">
                 <Icon type="user" />
                 <span className="nav-text">
-                  Booking
+                  Hotel Booking
               </span>
               </Link>
             </Menu.Item>
@@ -93,8 +94,27 @@ class App extends Component {
             <div style={{
               padding: 24, background: '#fff', textAlign: 'center', minHeight: 360,
             }}
-            >
-              {routes.map(prop => <Route path={prop.path} component={prop.component} />)}
+            >  VD VD
+              {console.log(routes)}
+              <Switch >
+                {/* <Route
+                exact
+                path={location.pathname}
+                component={DashboardContainer}
+              />
+              <Route                
+                path='/bookings'
+                component={BookingContainer}
+              /> */}
+                {/* <Route
+                path={`${match.path}faqs`}
+                component={Faq}
+              /> */}
+                {routes.map(prop => {
+                  console.log({ prop });
+                  return <Route path={prop.path} exact={prop.exact} component={prop.component} />
+                })}
+              </Switch>
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
@@ -108,4 +128,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default HotelMain;
