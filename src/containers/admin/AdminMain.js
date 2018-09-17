@@ -16,6 +16,11 @@ class AdminMain extends Component {
     this.state = {
       collapsed: false,
     };
+    this.screenHeight = 0;
+  }
+
+  componentDidMount() {
+    this.screenHeight = window.innerHeight/2;
   }
 
   toggle = () => {
@@ -27,10 +32,9 @@ class AdminMain extends Component {
 
   render() {
     const { routes } = this.props;
-    console.log('app props', this.props);
     return (
 
-      <Layout>
+      <Layout style={{height:"100vh"}}>
         <Header
           className="header-style"
           style={{
@@ -44,6 +48,7 @@ class AdminMain extends Component {
           style={{
             background: 'white', overflow: 'auto', height: '100vh', marginTop: '63px', position: 'fixed', left: 0, border: '2px solid #DEDEDF',
           }}
+          
         >
 
           <Menu theme="white" mode="inline" defaultSelectedKeys={['4']}>
@@ -56,12 +61,12 @@ class AdminMain extends Component {
             <SubMenu
               key="sub2"
               title={(
-                <span>
+                <div>
                   <Icon type="team" />
                   <span>
                     Hotel Management
                   </span>
-                </span>
+                </div>
               )}
             >
               <Menu.Item key="6">
@@ -90,11 +95,11 @@ class AdminMain extends Component {
         </Sider>
         <Layout style={{ marginLeft: 200, height: '100vh' }}>
 
-          <Content style={{ margin: '84px 16px 0', overflow: 'initial' }}>
+          <Content style={{ margin: '84px 16px 0', overflow: 'initial'}}>
             <div style={{
-              padding: 24, background: '#fff', textAlign: 'center', minHeight: 360,
+              padding: 0, background: '#fff', textAlign: 'center',
             }}
-            > VD
+            >
               {routes.map(prop => <Route path={prop.path} component={prop.component} />)}
             </div>
           </Content>

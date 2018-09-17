@@ -1,35 +1,33 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import hardSet from 'redux-persist/lib/stateReconciler/hardSet';
+import { createLogger } from 'redux-logger';
+import throttle from 'lodash/throttle';
+import { saveState, loadState } from '../utils/storageUtils';
 import reducer from '../reducers';
-// import { PERSIST_KEY } from '../constants/appConstants';
+
+const persistedState = loadState();
 
 
-// const persistedReducer = persistReducer(
-//   {
-//     key: 'root',
-//     storage,
-//     stateReconciler: hardSet,
-//     transforms: [encryptor],
-//   },
-//   reducer,
-// );
+const middleware = [thunk];
+  middleware.push(createLogger());
 
 
-// With Persistor
-const persistConfig = {
-  key: 'root',
-  storage,
-  stateReconciler: hardSet,
-};
+const store = createStore(
+  reducer,
+  persistedState,
+  applyMiddleware(...middleware),
+);
 
-const persistedReducer = persistReducer(persistConfig, reducer);
-const store = createStore(persistedReducer, applyMiddleware(thunk));
-const persistor = persistStore(store);
 
-export { store, persistor };
+store.subscribe(throttle(() => {
+  console.log('store.subscribe');
+  saveState({
+    loginReducer: store.getState().loginReducer,
+  });
+}, 3000));
+
+
+export { store };
 
 // Without persistor
 

@@ -111,7 +111,6 @@ class HotelMain extends Component {
                 component={Faq}
               /> */}
                 {routes.map(prop => {
-                  console.log({ prop });
                   return <Route path={prop.path} exact={prop.exact} component={prop.component} />
                 })}
               </Switch>

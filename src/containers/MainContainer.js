@@ -14,7 +14,7 @@ import * as actions from '../actions/loginAction';
 import HotelMain from './hotel/HotelMain';
 import AdminMain from './admin/AdminMain';
 import { adminRoutes, hotelRoutes } from '../routes/index';
-
+import {store} from '../store/index';
 // const adminRoutes = [
 //     { path: '/about', component: AboutComponent },
 //     { path: '/contact', component: ContactComponent },
@@ -41,10 +41,10 @@ class HomeContainer extends React.Component {
     }
     componentDidMount() {
         const { isLoggedIn, history } = this.props;
-        if (!isLoggedIn) {
+        if (!store.getState().loginReducer.isLoggedIn) {
             history.push('/login');
         }
-        else{
+        else {
             history.push('/dashboard')
         }
     }

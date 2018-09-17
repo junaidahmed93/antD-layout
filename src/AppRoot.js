@@ -6,13 +6,13 @@ import { createBrowserHistory } from "history";
 
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import { store, persistor } from './store/index';
+import { store } from './store/index';
 import LoginComponent from './LoginComponent';
 import MainContainer from './containers/MainContainer';
 
 const hist = createBrowserHistory();
 const AppRoot = () => (
-    <PersistGate loading={null} persistor={persistor}>
+    // <PersistGate loading={null} persistor={persistor}>
         <Provider store={store}>
             <Router history={hist}>
                 <Switch>
@@ -21,7 +21,7 @@ const AppRoot = () => (
                 </Switch>
             </Router>
         </Provider>
-    </PersistGate>
+    // </PersistGate>
 );
 
 export default AppRoot;

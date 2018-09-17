@@ -3,7 +3,7 @@ import CONSTANTS from '../constants/actionConstants';
 const initialState = {
     user: {},
     isLoggedIn: false,
-    userType:'',
+    userType: '',
 };
 
 const loginReducer = (state = initialState, action) => {
@@ -12,11 +12,9 @@ const loginReducer = (state = initialState, action) => {
             {
                 return Object.assign({}, state, {
                     isLoggedIn: true,
-                    userType: 'hotel'
+                    userType: 'admin'
                 });
             }
-
-
         case CONSTANTS.LOG_OUT:
             return Object.assign({}, state, {
                 isLoggedIn: false,
