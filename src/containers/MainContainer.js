@@ -40,13 +40,14 @@ class HomeContainer extends React.Component {
 
     }
     componentDidMount() {
+        console.log('main ', this.props);
         const { isLoggedIn, history } = this.props;
         if (!store.getState().loginReducer.isLoggedIn) {
             history.push('/login');
         }
-        else {
-            history.push('/dashboard')
-        }
+        // else {
+        //     history.push('/dashboard')
+        // }
     }
 
     logout = () => {

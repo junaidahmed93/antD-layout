@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Table, Divider, Tag } from 'antd';
 
 const columns = [{
-  title: 'Name',
-  dataIndex: 'name',
-  key: 'name',
+  title: 'Customer Name',
+  dataIndex: 'cust-name',
+  key: 'cust-name',
   render: text => <a href="javascript:;">{text}</a>,
 }, {
   title: 'Age',
@@ -16,7 +16,7 @@ const columns = [{
   title: 'Address',
   dataIndex: 'address',
   key: 'address',
-},  
+},
 {
   title: 'Booking Ref',
   dataIndex: 'bookingRef',
@@ -37,57 +37,36 @@ const columns = [{
   dataIndex: 'customer',
   key: 'customer',
 },
-  , {
-  title: 'Tags',
-  key: 'tags',
-  dataIndex: 'tags',
-  render: tags => (
-    <span>
-      {tags.map(tag => <Tag color="blue" key={tag}>{tag}</Tag>)}
-    </span>
-  ),
-}, {
-  title: 'Action',
-  key: 'action',
-  render: (text, record) => (
-    <span>
-      <a href="javascript:;">Invite {record.name}</a>
-      <Divider type="vertical" />
-      <a href="javascript:;">Delete</a>
-    </span>
-  ),
-}];
+];
 
 const data = [{
+
+  'cust-name': 'John Brown',
   key: '1',
-  name: 'John Brown',
   age: 32,
   address: 'New York No. 1 Lake Park',
   bookingRef: 'DXB000000010',
   batchId: '285',
   flightNo: 'EA 123',
   customer: 'TAHIR KHAN',
-  tags: ['nice', 'developer'],
 }, {
   key: '2',
-  name: 'Jim Green',
+  'cust-name': 'Jim Green',
   age: 42,
   address: 'New York No. 1 Lake Park',
   bookingRef: 'DXB000000010',
   batchId: '285',
   flightNo: 'EA 123',
   customer: 'TAHIR KHAN',
-  tags: ['loser'],
 }, {
   key: '3',
-  name: 'Joe Black',
+  'cust-name': 'Joe Black',
   age: 32,
   address: 'New York No. 1 Lake Park',
   bookingRef: 'DXB000000010',
   batchId: '285',
   flightNo: 'EA 123',
   customer: 'TAHIR KHAN',
-  tags: ['cool', 'teacher'],
 }];
 
 class BookingContainer extends React.Component {
@@ -96,10 +75,11 @@ class BookingContainer extends React.Component {
   }
 
   render() {
+    console.log('this.props booking container', this.props);
     return (
       <Table columns={columns} dataSource={data} />
     );
   }
 }
 
-export default BookingContainer;
+export default withRouter(BookingContainer);
